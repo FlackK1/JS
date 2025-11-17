@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="omat_ohjeet.css">  
+   <style>
+.box2 {
+    background-color:RGB(218,177,218);
+    width: 50%;
+    border: 1px solid PURPLE;
+    padding: 35px;
+    margin: 270px;
+	 margin-top: 20px;
+  }
+
+   </style>
+ </head>
+ <body>
+
+   <div class="header">
+     <h2> JS Tehtävät 1 </h2>
+   </div>
+
+   <div class="row">
+
+    <div class="col-3 col-s-3 menu">
+      <ul>
+       <a href="JS.index" id="viiva"><li> Tehtävä  1 -  6 </li></a>
+       <a href="sivu1.index" id="viiva"><li> Tehtävä  7 - 12 </li></a>
+       <a href="sivu2.index" id="viiva"><li> Tehtävä 13 - 22 </li></a>
+      
+      </ul>
+    </div>
+
+     <div class="box2">
+	
+      <h3> Tehtävä 1 </h3>
+      <p> Teksi näkyy tiettyä kohtaa painaessa. </p>
+<div class="koodi"><pre>
+ <style>
+    #main-image {
+      width: 640px; 
+   
+    }
+    body { text-align: center; font-family: Arial, sans-serif; }
+   
+    #image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .infoA {
+      display: none; 
+      position: absolute;
+      background: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      z-index: 2;
+    }
+    .highlight {
+      position: absolute;
+      border: 2px solid pink;
+      cursor: pointer;
+    }
+  </style>
+
+<div id="image-container1">
+  <img id="main-image" src="KUVAT/Kuva7.jpg" alt="Kuva vuorista" width="640;">
+
+  <div class="highlight" style="top: 350px; left: 500px; width: 100px; height: 100px;" onclick="toggleBox('Vuori')"></div>
+  <div class="highlight" style="top: 550px; left: 800px; width: 120px; height: 120px;" onclick="toggleBox('Turistit')"></div>
+  <div class="highlight" style="top: 550px; left: 500px; width: 80px; height: 80px;" onclick="toggleBox('Vesi')"></div>
+</div>
+
+<div id="Vuori" class="infoA" style="top: 50px; left: 270px;"> <p>Se on vuori</p> </div>
+<div id="Vesi" class="infoA" style="top: 230px; left: 270px;"> <p>Tämä on vettä</p> </div>
+<div id="Turistit" class="infoA" style="top: 200px; left: 580px;"> <p>Ne ovat turisteja</p> </div>
+
+<script>
+  function toggleBox(id) {
+    const box = document.getElementById(id);
+    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+
+</pre></div>
+
+
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 2 </h3>
+      <p> Kolmen rinna lasku ja tulos. </p>
+<div class="koodi"><pre>
+  <p id="kolmeRinnan"></p>
+ <p id="tuloS"></p>
+ 
+ <script>
+ 
+  var R1=100, R2=70, R3=25, Rsarja;
+ function kolmeRinnan() {
+   Rsarja= R1+R2+R3;
+      return Rsarja;
+ 
+ 
+ }
+     document.getElementById("kolmeRinnan").innerHTML =
+	  "R1: " + R1 + " <br>" + 
+      "R2: " + R2 + " <br>" + 
+      "R3: " + R3 + " <br>"; 
+  document.getElementById("tuloS").innerHTML = kolmeRinnan();
+  </script>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 3 </h3>
+      <p> Pallon tilasuus/säde laskin. </p>
+<div class="koodi"><pre>
+<body>
+<p>Pallon tilavuus</p>
+<form id="MyForm">
+    <label for="radius">Säde</label>
+    <input type="text" id="radius" required>
+    <label for="volume">Tilavuus</label>
+    <input type="text" id="volume" readonly>
+    <input type="submit" value="Laske">
+</form>
+<script>
+function calculateVolume() {
+    var radius = document.getElementById('radius').value;
+    var volume = (4 / 3) * Math.PI * Math.pow(Math.abs(radius), 3);
+    document.getElementById('volume').value = volume.toFixed(4);
+    return false;
+}
+
+document.getElementById('MyForm').onsubmit = calculateVolume;
+
+
+</script>
+</body>
+</html>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 4 </h3>
+      <p> Resistanssin lasku. </p>
+<div class="koodi"><pre>
+<div>
+    <input type="number" id="R1"><br><br>
+    <input type="number" id="R2"><br><br>
+    <input type="number" id="R3"><br><br>
+   
+    <button onclick="laskeResistanssi()">laske resistanssi</button>
+</div>
+
+<p id="laskuA"></p>
+
+<script>
+    function laskeResistanssi() {
+    
+        var R1 = parseFloat(document.getElementById("R1").value) || 100;
+        var R2 = parseFloat(document.getElementById("R2").value) || 100;
+        var R3 = parseFloat(document.getElementById("R3").value) || 100;
+
+   var Rkok = 1 / ((1 / R1) + (1 / R2) + (1 / R3));
+
+	document.getElementById("laskuA").innerHTML = 
+  "R1: " + R1 + " <br>" + 
+  "R2: " + R2 + " <br>" + 
+  "R3: " + R3 + " <br>" + 
+  "Rkok: " + Rkok.toFixed(5);
+
+    }
+
+</script>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 5 </h3>
+      <p> Näyttää koneen mallin ja hinnan.. </p>
+<div class="koodi"><pre>
+ <H3> Tuotteet</H3>
+  <p id="koe10"></p>
+<p id="koe11"></p>
+
+
+  <script>
+   var koneMERKKI = "BOSCH PBH 2100 RE";
+ var koneMERKKI = "200e";
+ 
+   
+   document.getElementById("koe10").innerHTML = "Poravasara " + window.koneMERKKI;
+   
+  </script>
+  <script>
+   var koneMERKKI1 = "BOSCH FF 1300 SE";
+	 var koneMERKKI = "70e";
+	 
+	  document.getElementById("koe11").innerHTML = "Vahauskone " + window.koneMERKKI;
+	   </script>
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 6 </h3>
+      <p> Näyttää mitä painiketta on painettu/väri vaihtuu. </p>
+<div class="koodi"><pre>
+
+<body>
+
+   <div onmousedown="hiiriPainike(event)">
+      Klikkaa tätä tekstiä hiiren painikkeilla.
+   </div>
+   <p id="koe1"></p>
+
+   <script>
+   	  
+	  function changeColor(event){
+var color = 'purple';
+event.style.backgroundColor=color;
+}
+      function hiiriPainike(event) {
+         if (event.button == 0) {
+		 event.target.textContent = "teksti vaihtui";
+		 event.target.style.backgroundColor= "purple";
+            alert("Painoit hiiren vasenta painiketta");
+         }
+         if (event.button == 1) {
+		  event.target.textContent = "teksti vaihtui";
+		  event.target.style.backgroundColor= "purple";
+            alert("Painoit hiiren keskellä olevan rullan painiketta");
+         }
+         if (event.button == 2) {
+		  event.target.textContent = "teksti vaihtui";
+		  event.target.style.backgroundColor= "purple";
+            alert("Painoit hiiren oikeaa painiketta");
+         }
+      }
+
+      document.addEventListener('contextmenu', event => event.preventDefault());
+
+   </script>
+
+</body>
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+    </div>
+</div>
+
+
+
+
+   </div>
+
+ </body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="omat_ohjeet.css">  
+   <style>
+.box3 {
+    background-color:RGB(218,177,218);
+    width: 50%;
+    border: 1px solid PURPLE;
+    padding: 35px;
+    margin: 270px;
+	 margin-top: 20px;
+  }
+
+   </style>
+ </head>
+ <body>
+
+   <div class="header">
+     <h2> JS Tehtävät 2</h2>
+   </div>
+
+   <div class="row">
+
+    <div class="col-3 col-s-3 menu">
+      <ul>
+       <a href="JS.index" id="viiva"><li> Tehtävä  1 -  6 </li></a>
+       <a href="sivu1.index" id="viiva"><li> Tehtävä  7 - 12 </li></a>
+       <a href="sivu2.index" id="viiva"><li> Tehtävä 13 - 22 </li></a>
+      
+      </ul>
+    </div>
+
+     <div class="box3">
+	
+	
+      <h3> Tehtävä 1 </h3>
+      <p> Resistanssin ja rinnankytkennän laskeminen vasemmalla painikkeella/alt + vasen. </p>
+<div class="koodi"><pre>
+<body>
+   <div id="resistorBox">Klikkaa ja laske resistanssi</div>
+
+   <script>
+      const R1 = 100;
+      const R2 = 100;
+      const R3 = 100;
+
+  
+      function laskeSarjakytkenta() {
+         return R1 + R2 + R3;
+      }
+
+      
+      function laskeRinnankytkenta() {
+         return 1 / ((1 / R1) + (1 / R2) + (1 / R3));
+      }
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+         const resistorBox = document.getElementById("resistorBox");
+
+         resistorBox.addEventListener("click", function (event) {
+            if (event.altKey && event.button === 0) {
+
+               const rinnankytkentaTulos = laskeRinnankytkenta().toFixed(5);
+               this.textContent = `Rinnankytkennän tulos: ${rinnankytkentaTulos} Ω`;
+            } else if (event.button === 0) {
+            
+               const sarjakytkentaTulos = laskeSarjakytkenta();
+               this.textContent = `Sarjakytkennän tulos: ${sarjakytkentaTulos} Ω`;
+            }
+         });
+      });
+   </script>
+</body>
+</pre></div>
+
+
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 2 </h3>
+      <p> Random noppakuva. </p>
+	 
+<div class="koodi"><pre>
+<h3> Tehtävä 2 </h3>
+<p> Random noppakuva. </p>
+
+<p id="noppA" class="vari1"></p>
+<p id="noppateksti"></p>
+<img id="js" src="" alt="Dice Image" style="cursor: pointer;" width="200">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  const KUVAT = [
+    "KUVAT/arpanoppa1.jpg", 
+    "KUVAT/arpanoppa2.jpg", 
+    "KUVAT/arpanoppa3.jpg", 
+    "KUVAT/arpanoppa4.jpg", 
+    "KUVAT/arpanoppa5.jpg", 
+    "KUVAT/arpanoppa6.jpg"
+  ];
+
+  function omanoppA(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  $("#js").on("click", function () {
+    const randomIndex = omanoppA(0, KUVAT.length - 1);
+    const img = $(this);
+
+    img.addClass("shaking");
+    setTimeout(() => img.removeClass("shaking"), 300);
+
+    $(this).attr("src", KUVAT[randomIndex]);
+    $("#noppateksti").text("Arpa " + (randomIndex + 1)); 
+  });
+
+  $(document).ready(function () {
+    $("#js").attr("src", KUVAT[0]);
+  });
+</script>
+
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 3 </h3>
+      <p> Eri tervehdys kellon ajan mukaan. </p>
+<div class="koodi"><pre>
+<p id="Tervehdys"></p>
+
+<button class="button" onclick="Tervehdys()">Tervehdys</button>
+
+<script>
+function Tervehdys() {
+
+    if (new Date().getHours() < 10) {
+        document.getElementById("Tervehdys").innerHTML = "Huomenta";
+		
+    } else if (new Date().getHours() < 14) {
+        document.getElementById("Tervehdys").innerHTML = "Päivää";
+		
+    } else if (new Date().getHours() < 17) {
+        document.getElementById("Tervehdys").innerHTML = "Iltapäivää";
+		
+    } else if (new Date().getHours() < 23) {
+        document.getElementById("Tervehdys").innerHTML = "Iltaa";
+		
+    } else {
+        document.getElementById("Tervehdys").innerHTML = "Hyvää yötä";
+    }
+}
+</script>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 4 </h3>
+      <p> Email. </p>
+<div class="koodi"><pre>
+ <div>
+
+  </div>
+  
+  
+  <script>
+    function tarkistaEmail() {
+      var x = document.forms["omaEmail"]["email"].value;
+      if (x == "") {
+        alert("Oma email puuttuu. Ole hyvä, anna email.");
+        return false;
+      }
+    }
+  </script>
+
+  
+  <form name="omaEmail"  onsubmit="return tarkistaEmail()" method="post">
+   eMail: <input type="text" name="email">
+   <input type="submit" value="Lähetä">
+  </form>
+  
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 5 </h3>
+      <p> 	Päivämäärä. </p>
+<div class="koodi"><pre>
+ 
+ 
+  <p id="aikaD"></p>
+<p id="aikaF"></p>
+  <script>
+   var aika = new Date();
+   var paiva = ["sunnuntai","maanantai","tiistai","keskiviikko","torstai","perjantai","lauantai"];
+   var kuukausi = ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"];
+
+   document.getElementById("aikaD").innerHTML = paiva[aika.getDay()];
+   document.getElementById("aikaF").innerHTML = kuukausi[aika.getMonth()];
+  </script>   
+  
+</pre></div>
+<!---------------------------------------------------------------------------->
+
+
+      <h3> Tehtävä 6 </h3>
+      <p> aika ja päivämäärä. </p>
+<div class="koodi"><pre>
+ <body>
+<p id="aikaM"></p>
+<p id="aikaP"></p>
+<p id="aikaL"></p>
+<p id="aikaO"></p>
+
+<script>
+  var aika = new Date();
+  var paiva = ["sunnuntai", "maanantai", "tiistai", "keskiviikko", "torstai", "perjantai", "lauantai"];
+  var kuukausi = ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"];
+
+  // Näyttää viikonpäivän
+  document.getElementById("aikaM").innerHTML = paiva[aika.getDay()];
+
+  // Näyttää kuukauden
+  document.getElementById("aikaP").innerHTML = kuukausi[aika.getMonth()];
+
+  // Näyttää päivämäärän (esim. 17.2.2025)
+  document.getElementById("aikaL").innerHTML = aika.getDate() + "." + (aika.getMonth() + 1) + "." + aika.getFullYear();
+
+  // Näyttää kellonajan (tunnit ja minuutit)
+  document.getElementById("aikaO").innerHTML = aika.getHours() + ":" + (aika.getMinutes() < 10 ? "0" : "") + aika.getMinutes();
+</script>
+</body>
+ 
+</pre></div>
+
+
+     <h3> Tehtävä 7 </h3>
+      <p> Kello. </p>
+<div class="koodi"><pre>
+ <body  onload="aloitaKello()">
+
+ <div class="kellotaulu" id="txt"> </div>
+ <script>
+  function aloitaKello() {
+   var aika = new Date();
+   var h = aika.getHours();
+   var m = aika.getMinutes();
+   var s = aika.getSeconds();
+   m = otaAika(m);
+   s = otaAika(s);
+   document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+   var t = setTimeout(aloitaKello, 500);
+  }
+  function otaAika(i) {
+   if (i < 10) {i = "0" + i}; 
+   return i;
+  }
+ </script>
+ </body>
+</pre></div>
+
+
+     <h3> Tehtävä 8 </h3>
+      <p> Odota ja laatikko ilmestuu </p>
+<div class="koodi"><pre>
+ <style>
+  #box5 {
+    width: 200px;
+    border: 2px solid purple;
+    padding: 50px;
+    margin: 150px;
+	  margin-top: -5px;
+    text-align: center;
+    display: none; 
+  }
+</style>
+
+<div id="box5">
+
+</div>
+
+<script>
+  setTimeout(naytaLaatikko, 3000); 
+
+  function naytaLaatikko() {
+    document.getElementById("box5").style.display = "block";
+  }
+</script>
+
+</pre></div>
+
+
+     <h3> Tehtävä 9 </h3>
+      <p> Paina ja laatikko ilmestuu </p>
+<div class="koodi"><pre>
+<style>
+  #box6 {
+    width: 200px;
+    border: 2px solid purple;
+    padding: 50px;
+    margin: 150px;
+	  margin-top: -5px;
+    text-align: center;
+    display: none; 
+  }
+</style>
+
+<div id="box6">
+
+</div>
+<button onclick="setTimeout(naytaLaatikko, 3000);">paina</button>
+<script>
+ 
+
+  function naytaLaatikko() {
+    document.getElementById("box6").style.display = "block";
+  }
+</script>
+
+</pre></div>
+     <h3> Tehtävä 10 </h3>
+      <p> Nimet ja iät. </p>
+<div class="koodi"><pre>
+<p id="taulu1A"></p>
+<script>
+  var henkilo = [];
+
+
+  henkilo[0] = ["Kalle", "Korkkinen", 30];
+  henkilo[1] = ["Venla", "Kuusimo", 23];
+  henkilo[2] = ["Koski", "Korvanen", 46];
+
+  var output = "";
+  for (var i = 0; i < henkilo.length; i++) {
+    output += henkilo[i][0] + " " + henkilo[i][1] + " " + henkilo[i][2] + "<br>";
+  }
+
+  document.getElementById("taulu1A").innerHTML = output;
+</script>
+
+
+</pre></div>
+
+
+ </div>
+    </div>
+
+
+
+
+
+
+   </div>
+
+ </body>
+</html>

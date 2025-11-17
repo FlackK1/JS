@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="omat_ohjeet.css">  
+   <style>
+   
+.box1 {
+    background-color:RGB(218,177,218);
+    width: 50%;
+    border: 1px solid PURPLE;
+    padding: 35px;
+    margin: 270px;
+	 margin-top: 20px;
+  }
+
+   </style>
+ </head>
+ <body>
+
+   <div class="header">
+     <h2> JS Tehtävät </h2>
+   </div>
+
+   <div class="row">
+
+    <div class="col-3 col-s-3 menu">
+      <ul>
+       <a href="JS.index" id="viiva"><li> Tehtävä  1 -  6 </li></a>
+       <a href="sivu1.index" id="viiva"><li> Tehtävä  7 - 12 </li></a>
+       <a href="sivu2.index" id="viiva"><li> Tehtävä 13 - 22 </li></a>
+      
+      </ul>
+    </div>
+
+    <div class="box1">
+	
+      <h3> Tehtävä 1 </h3>
+      <p> Tekstin vaihtuminen painamalla. </p>
+<div class="koodi"><pre>
+ <body>
+
+  <p id="testi1"> tämä teksti vaihtuu </p>
+  
+  <button class="button button1" onclick="omaOhjelma1()">Vaihda teksti painamalla</button>
+   <button class="button button2" onclick="omaOhjelma2()">Vaihda teksti painamalla</button>
+
+<p id="testi2"> tämä teksti vaihtuu </p>
+
+  <script>
+   function omaOhjelma1() {
+     document.getElementById("testi1").innerHTML = "teksti vaihtui";
+   }
+    function omaOhjelma2() {
+     document.getElementById("testi2").innerHTML = "teksti vaihtui";
+   }
+  </script>
+
+  </body>
+</pre></div>
+
+
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 2 </h3>
+      <p> Tekstin vaihtuminen painamalla kuvaa. </p>
+<div class="koodi"><pre>
+<body>
+
+  <p id="testi3">Vaihda teksti</p>
+  <img id="image1" src="KUVAT/kuva3.jpg" alt="Kuva 3" onclick="vaihdaTeksti3();">
+  <img id="image2" src="KUVAT/Kuva4.jpg" alt="Kuva 4" onclick="vaihdaTeksti4();">
+  <p id="testi4">Vaihda teksti</p>
+
+  <script>
+    function vaihdaTeksti3() {  
+      document.getElementById("testi3").innerHTML = "Teksti vaihtui";
+    }
+    
+    function vaihdaTeksti4() {  
+      document.getElementById("testi4").innerHTML = "Teksti vaihtui";
+    }
+  </script>
+</body>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 3 </h3>
+      <p> Rinnankytkentä </p>
+<div class="koodi"><pre>
+ <p id="testiS"></p>
+<body>
+<script>
+
+    var R1 = 100;
+    var R2 = 100;
+    var R3 = 100;
+
+    var Rkok = 1 / ((1 / R1) + (1 / R2) + (1 / R3));
+
+    Rkok = Rkok.toFixed(5);
+
+    document.getElementById("testiS").innerHTML = 
+      "R1: " + R1 + " <br>" + 
+      "R2: " + R2 + " <br>" + 
+      "R3: " + R3 + " <br>" + 
+      "Rkok: " + Rkok;
+</script>
+</body>
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 4 </h3>
+      <p> Muuttujilla tehty runo. </p>
+<div class="koodi"><pre>
+  <p id="testiD"></p>
+
+   <script>
+    var runo =  "Sillä missä teidän aarteenne on ";
+    runo = runo +  " siellä on myös teidän sydämenne.";
+
+
+    document.getElementById("testiD").innerHTML =
+    runo;
+    
+   </script>
+ 
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 5 </h3>
+      <p> Keskiarvon laskeminen yksiulotteisella taulukolla. </p>
+<div class="koodi"><pre>
+<div>
+    <input type="number" id="num1"><br><br>
+    <input type="number" id="num2"><br><br>
+    <input type="number" id="num3"><br><br>
+    <input type="number" id="num4"><br><br>
+
+    <button onclick="laskeKeskiarvo()">Laske keskiarvo</button>
+</div>
+
+<p id="laskuA"></p>
+
+<script>
+    function laskeKeskiarvo() {
+    
+        var luku1 = parseFloat(document.getElementById("num1").value) || 0;
+        var luku2 = parseFloat(document.getElementById("num2").value) || 0;
+        var luku3 = parseFloat(document.getElementById("num3").value) || 0;
+        var luku4 = parseFloat(document.getElementById("num4").value) || 0;
+
+  
+        var merkit = [luku1, luku2, luku3, luku4];
+        var summa = merkit.reduce((a, b) => a + b, 0);
+        var keskiarvo = summa / merkit.length;
+
+
+        document.getElementById("laskuA").innerHTML =
+            "Keskiarvo: " + keskiarvo.toFixed(2);
+    }
+</script>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+      <h3> Tehtävä 6 </h3>
+      <p> Keskiarvon laskeminen kaksiulotteisella taulukolla. </p>
+<div class="koodi"><pre>
+<div>
+   <input type="number" id="R1"><br><br>
+    <input type="number" id="R2"><br><br>
+    <input type="number" id="R3"><br><br>
+
+    <button onclick="laskeKeskiarvo1()">Laske keskiarvo</button>
+</div>
+
+<p id="laskua1"></p>
+
+<script>
+    function laskeKeskiarvo1() {
+       
+        var luku1 = parseFloat(document.getElementById("num1").value) || 0;
+        var luku2 = parseFloat(document.getElementById("num2").value) || 0;
+        var luku3 = parseFloat(document.getElementById("num3").value) || 0;
+        var luku4 = parseFloat(document.getElementById("num4").value) || 0;
+
+
+        var taulukko = [
+            ["luku1", luku1],
+            ["luku2", luku2],
+            ["luku3", luku3],
+            ["luku4", luku4]
+        ];
+
+      
+        var summa = taulukko.reduce((acc, rivi) => acc + rivi[1], 0);
+        var keskiarvo1 = summa / taulukko.length;
+
+       
+        var tuloste = "";
+        taulukko.forEach(rivi => {
+            tuloste += rivi[0] + " = " + rivi[1] + "<br>";
+        });
+        tuloste += "Ka = " + keskiarvo1.toFixed(2);
+
+        document.getElementById("laskua1").innerHTML = tuloste;
+    }
+</script>
+
+</pre></div>
+
+<!---------------------------------------------------------------------------->
+
+    </div>
+ </div>
+
+
+
+
+
+   </div>
+
+ </body>
+</html>
